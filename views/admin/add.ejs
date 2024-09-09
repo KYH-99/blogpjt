@@ -1,0 +1,23 @@
+<a href="/allPosts">&larr; 뒤로</a>
+<div class="admin-title">
+    <h2><%= locals.title %></h2>
+</div>
+
+<form action="/add" method="POST" enctype="multipart/form-data">
+    <label for="title"><b>제목</b></label>
+    <input type="text" placeholder="게시물 제목" name="title" id="title" required>
+
+    <label for="body"><b>내용</b></label>
+    <textarea name="body" id="body" cols="50" rows="10" placeholder="게시물 내용" required></textarea>
+
+    <label for="category"><b>카테고리</b></label>
+    <select name="category" id="category" required>
+        <option value="무서운 이야기">무서운 이야기</option>
+        <option value="국내 3대 폐가">국내 3대 폐가</option>
+    </select>
+
+    <label for="image"><b>이미지 업로드</b></label>
+    <input type="file" name="image" id="image" accept="image/*">
+
+    <input type="submit" value="등록" class="btn">
+</form>

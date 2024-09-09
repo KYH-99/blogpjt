@@ -1,0 +1,35 @@
+<a href="#">&larr; 뒤로</a>
+<div class="admin-title">
+    <h2><%= locals.title %></h2>
+    <form action="/delete/<%= data._id %>?_method=DELETE" method="POST">
+        <input type="submit" value="삭제" class="btn btn-delete">
+    </form>
+</div>
+
+<form action="/edit/<%= data._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+    <label for="title"><b>제목</b></label>
+    <input type="text" name="title" id="title" value="<%= data.title %>" required>
+
+    <label for="body"><b>내용</b></label>
+    <textarea name="body" id="body" cols="50" rows="10" required>
+        <%= data.body %>
+    </textarea>
+
+    <label for="category"><b>카테고리</b></label>
+    <select name="category" id="category" required>
+        <option value="무서운 이야기" <%= data.category === '무서운 이야기' ? 'selected' : '' %>>무서운 이야기</option>
+        <option value="국내 3대 폐가" <%= data.category === '국내 3대 폐가' ? 'selected' : '' %>>국내 3대 폐가</option>
+    </select>
+
+    <% if (data.image) { %>
+        <div>
+            <label><b>현재 이미지:</b></label>
+            <img src="<%= data.image %>" alt="Current Image" style="max-width: 100px; display: block; margin-bottom: 10px;">
+        </div>
+    <% } %>
+
+    <label for="image"><b>이미지 변경</b></label>
+    <input type="file" name="image" id="image" accept="image/*">
+
+    <input type="submit" value="수정" class="btn">
+</form>
